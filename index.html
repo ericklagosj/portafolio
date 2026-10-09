@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Erick Lagos · Portafolio</title>
+<meta name="description" content="Erick Lagos — Ingeniero Civil en Informática. Desarrollo web full stack y ciberseguridad (eJPT en curso). Chile.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Erick Lagos · Portafolio">
+<meta property="og:description" content="Ingeniero Civil en Informática. Desarrollo web full stack y ciberseguridad (eJPT en curso).">
+<meta property="og:url" content="https://portafolio-erick-erickljs-projects.vercel.app/">
+<meta property="og:site_name" content="Erick Lagos">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Erick Lagos · Portafolio">
+<meta name="twitter:description" content="Desarrollo web full stack y ciberseguridad (eJPT en curso).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+<style>
+/* Layout: una sola columna centrada con riel de números a la izquierda en desktop;
+   identidad "consola de seguridad" — fondo oscuro, acento verde, tipografía mono para datos */
+:root{
+  --bg:#0B100E; --surface:#131B18; --surface-2:#0F1613; --ink:#E9F1EC; --muted:#8DA097;
+  --line:#223029; --accent:#45C98C; --accent-ink:#06271B; --warn:#E8B339;
+  --grid: rgba(69,201,140,.05);
+  --f-display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --f-body:"Figtree","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Consolas,monospace;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){
+  --bg:#F3F6F4; --surface:#FFFFFF; --surface-2:#EDF2EF; --ink:#13201B; --muted:#55655E;
+  --line:#D7DED9; --accent:#0F7A55; --accent-ink:#FFFFFF; --warn:#9A6B00;
+  --grid: rgba(15,122,85,.05); color-scheme:light;
+}}
+:root[data-theme="light"]{
+  --bg:#F3F6F4; --surface:#FFFFFF; --surface-2:#EDF2EF; --ink:#13201B; --muted:#55655E;
+  --line:#D7DED9; --accent:#0F7A55; --accent-ink:#FFFFFF; --warn:#9A6B00;
+  --grid: rgba(15,122,85,.05); color-scheme:light;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  background:var(--bg);color:var(--ink);font:16px/1.65 var(--f-body);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:52px 52px;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1000px;margin:0 auto;padding-inline:22px}
+a{color:var(--accent);text-underline-offset:3px}
+h1,h2,h3,h4,h5{text-wrap:balance}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:5px}
+
+/* header */
+.nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);
+  background:color-mix(in srgb,var(--bg) 82%,transparent);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-block:14px;flex-wrap:wrap}
+.brand{font:700 1.02rem var(--f-mono);letter-spacing:-.01em;display:flex;align-items:center;gap:9px}
+.brand .sig{color:var(--accent)}
+.nav nav{display:flex;gap:22px;font:500 .9rem var(--f-body);flex-wrap:wrap}
+.nav nav a{color:var(--muted);text-decoration:none}
+.nav nav a:hover{color:var(--ink)}
+.theme{background:transparent;border:1px solid var(--line);color:var(--muted);border-radius:8px;
+  width:34px;height:34px;cursor:pointer;font-size:15px;display:grid;place-items:center}
+.theme:hover{color:var(--ink);border-color:var(--accent)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:46px;align-items:center;padding-block:76px 60px}
+.kicker{font:600 .8rem var(--f-mono);letter-spacing:.06em;color:var(--accent);margin:0 0 18px;display:flex;align-items:center;gap:9px}
+.kicker::before{content:"";width:26px;height:1px;background:var(--accent)}
+.hero h1{font:800 clamp(2.5rem,6.4vw,4.3rem)/1.0 var(--f-display);letter-spacing:-.035em;margin:0 0 20px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero .lede{font-size:1.12rem;color:var(--muted);max-width:52ch;margin:0}
+.hero .lede b{color:var(--ink);font-weight:600}
+.actions{display:flex;gap:11px;flex-wrap:wrap;margin-top:30px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 17px;border-radius:9px;
+  font:600 .93rem var(--f-body);text-decoration:none;cursor:pointer;border:1px solid var(--line);
+  background:var(--surface);color:var(--ink);transition:border-color .15s,transform .12s}
+.btn:hover{border-color:var(--accent);transform:translateY(-1px)}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn svg{width:16px;height:16px;fill:currentColor}
+
+/* terminal */
+.term{border:1px solid var(--line);border-radius:13px;background:var(--surface-2);overflow:hidden;
+  box-shadow:0 24px 50px -30px rgba(0,0,0,.7)}
+.term-bar{display:flex;align-items:center;gap:7px;padding:11px 14px;border-bottom:1px solid var(--line);
+  background:color-mix(in srgb,var(--accent) 8%,var(--surface-2))}
+.term-bar i{width:11px;height:11px;border-radius:50%;background:var(--line)}
+.term-bar i:nth-child(1){background:#ff5f57}.term-bar i:nth-child(2){background:#febc2e}.term-bar i:nth-child(3){background:#28c840}
+.term-bar b{margin-left:8px;font:500 .72rem var(--f-mono);color:var(--muted)}
+.term-body{padding:18px 18px 20px;font:400 .83rem/1.9 var(--f-mono);color:var(--muted);overflow-x:auto}
+.term-body .p{color:var(--accent);user-select:none;margin-right:8px}
+.term-body .v{color:var(--ink)}
+.term-body .ok{color:var(--accent)}
+.term-body .w{color:var(--warn)}
+.cur{display:inline-block;width:8px;height:1.05em;vertical-align:text-bottom;background:var(--accent);margin-left:2px;animation:blink 1.1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* sections */
+section{padding-block:30px}
+.shead{display:flex;align-items:baseline;gap:14px;margin-bottom:26px;border-top:1px solid var(--line);padding-top:30px}
+.shead .no{font:600 .82rem var(--f-mono);color:var(--accent)}
+.shead h2{font:700 clamp(1.5rem,3.2vw,2rem)/1.1 var(--f-display);letter-spacing:-.02em;margin:0}
+.shead p{margin:0 0 0 auto;color:var(--muted);font-size:.92rem;max-width:34ch;text-align:right}
+
+/* projects */
+.projects{display:grid;gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:15px;overflow:hidden}
+.card.feature{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr)}
+.thumb{display:block;overflow:hidden;background:var(--surface-2);border-bottom:1px solid var(--line);line-height:0}
+.thumb img{width:100%;height:220px;object-fit:cover;object-position:top;display:block;transition:transform .4s}
+.card:hover .thumb img{transform:scale(1.03)}
+.thumb.full{background:#EDF1EF}
+.thumb.full img{height:auto;object-fit:contain}
+.card.feature .thumb{grid-column:1 / -1}
+.card .pad{padding:28px}
+.badge-row{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.pill{font:600 .68rem var(--f-mono);letter-spacing:.05em;text-transform:uppercase;padding:4px 9px;border-radius:999px}
+.pill.live{background:color-mix(in srgb,var(--accent) 18%,transparent);color:var(--accent)}
+.pill.soon{background:transparent;border:1px dashed var(--muted);color:var(--muted)}
+.card h3{font:700 1.5rem/1.15 var(--f-display);letter-spacing:-.018em;margin:0 0 10px}
+.card .desc{color:var(--muted);margin:0 0 18px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 20px}
+.stat{border-left:2px solid var(--accent);padding-left:11px}
+.stat b{display:block;font:800 1.5rem var(--f-display);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.stat span{font:500 .72rem var(--f-mono);color:var(--muted);letter-spacing:.03em}
+.feat-list{margin:0 0 20px;padding:0;list-style:none;display:grid;gap:8px}
+.feat-list li{display:grid;grid-template-columns:18px 1fr;gap:9px;color:var(--muted);font-size:.95rem}
+.feat-list li::before{content:"▹";color:var(--accent)}
+.techrow{display:flex;flex-wrap:wrap;gap:7px}
+.tech{font:500 .76rem var(--f-mono);border:1px solid var(--line);border-radius:7px;padding:4px 9px;color:var(--ink);display:inline-flex;align-items:center;gap:6px}
+.tech i{font-size:15px}
+.cardlinks{display:flex;gap:16px;flex-wrap:wrap;margin-top:20px;font-weight:600;font-size:.92rem}
+.aside-panel{background:var(--surface-2);border-left:1px solid var(--line);padding:28px;font:400 .82rem/1.9 var(--f-mono);color:var(--muted);min-width:0;overflow-x:auto;white-space:pre}
+.aside-panel .c{opacity:.65}
+.aside-panel .k{color:var(--accent)}
+
+/* skills */
+.skills{display:grid;gap:26px}
+.skills h4{font:600 .76rem var(--f-mono);letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin:0 0 13px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:9px}
+.tool{display:flex;align-items:center;gap:11px;background:var(--surface);border:1px solid var(--line);
+  border-radius:11px;padding:11px 13px;transition:transform .12s,border-color .12s}
+.tool:hover{transform:translateY(-2px);border-color:var(--accent)}
+.tool i{font-size:27px;line-height:1;width:30px;text-align:center;flex:none;color:var(--ink)}
+.tool .mono{flex:none;width:30px;height:30px;border-radius:8px;display:grid;place-items:center;
+  font:800 .72rem var(--f-display);background:var(--accent);color:var(--accent-ink)}
+.tool span{font:600 .88rem var(--f-body);min-width:0;overflow-wrap:anywhere}
+
+/* security callout */
+.sec{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--warn);border-radius:13px;padding:26px}
+.sec h3{font:700 1.2rem var(--f-display);margin:0 0 8px}
+.sec p{color:var(--muted);margin:0 0 16px;max-width:60ch}
+.progress{display:flex;align-items:center;gap:12px;font:500 .8rem var(--f-mono);color:var(--muted);flex-wrap:wrap}
+.bar{flex:1;min-width:140px;height:7px;background:var(--surface-2);border-radius:99px;overflow:hidden;border:1px solid var(--line)}
+.bar i{display:block;height:100%;width:60%;background:linear-gradient(90deg,var(--accent),var(--warn))}
+
+/* path + education */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:34px}
+.path{list-style:none;margin:0;padding:0}
+.path li{display:grid;grid-template-columns:20px 1fr;gap:15px;padding-bottom:20px;position:relative}
+.path li::before{content:"";width:11px;height:11px;border-radius:50%;border:2px solid var(--accent);background:var(--bg);margin-top:6px;z-index:1}
+.path li::after{content:"";position:absolute;left:5px;top:18px;bottom:-2px;width:2px;background:var(--line)}
+.path li:last-child::after{display:none}
+.path li.now::before{background:var(--accent)}
+.path h5{font:700 1.02rem var(--f-display);margin:0 0 3px}
+.path p{margin:0;color:var(--muted);font-size:.9rem}
+.edu{display:grid;gap:14px;align-content:start}
+.edu .item{border:1px solid var(--line);border-radius:11px;padding:16px 18px;background:var(--surface)}
+.edu b{font:700 1rem var(--f-display);display:block}
+.edu span{color:var(--muted);font-size:.88rem;font-family:var(--f-mono)}
+
+/* contact */
+.contact{border:1px solid var(--line);border-radius:17px;background:
+  radial-gradient(120% 140% at 0% 0%,color-mix(in srgb,var(--accent) 12%,var(--surface)) 0%,var(--surface) 55%);
+  padding:44px;margin-block:30px 20px;text-align:center}
+.contact h2{font:800 clamp(1.8rem,4vw,2.6rem)/1.05 var(--f-display);letter-spacing:-.025em;margin:0 0 12px}
+.contact p{color:var(--muted);margin:0 auto 26px;max-width:46ch}
+.contact .actions{justify-content:center}
+.mail{display:inline-flex;align-items:center;gap:10px;background:var(--surface-2);border:1px solid var(--line);
+  border-radius:10px;padding:9px 9px 9px 15px;font:500 .9rem var(--f-mono);margin-bottom:22px;flex-wrap:wrap;justify-content:center}
+.mail span{user-select:all;overflow-wrap:anywhere}
+.mail button{background:var(--accent);color:var(--accent-ink);border:0;border-radius:7px;padding:7px 13px;font:600 .82rem var(--f-body);cursor:pointer}
+footer{border-top:1px solid var(--line);padding-block:26px 40px;color:var(--muted);
+  font:400 .78rem var(--f-mono);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* scroll reveal (solo con JS; sin JS todo es visible) */
+.js [data-reveal]{opacity:0;transform:translateY(20px)}
+.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.js [data-reveal][data-d="1"].in{transition-delay:.08s}
+.js [data-reveal][data-d="2"].in{transition-delay:.16s}
+.js [data-reveal][data-d="3"].in{transition-delay:.24s}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.js [data-reveal]{opacity:1!important;transform:none!important}}
+@media (max-width:820px){
+  .hero{grid-template-columns:1fr;gap:34px;padding-block:52px 40px}
+  .card.feature{grid-template-columns:1fr}
+  .aside-panel{border-left:0;border-top:1px solid var(--line)}
+  .two{grid-template-columns:1fr;gap:26px}
+  .shead{flex-wrap:wrap}.shead p{margin:0;text-align:left;max-width:none}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <div class="brand">erick<span class="sig">_</span>lagos</div>
+    <nav>
+      <a href="#work">Proyectos</a>
+      <a href="#stack">Stack</a>
+      <a href="#security">Seguridad</a>
+      <a href="#about">Perfil</a>
+      <a href="#contact">Contacto</a>
+    </nav>
+    <button class="theme" id="theme" type="button" aria-label="Cambiar tema">◐</button>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero" id="top">
+    <div>
+      <p class="kicker">Ingeniero Civil en Informática · Chile</p>
+      <h1>Desarrollo web que funciona, con ojo en la <em>seguridad</em>.</h1>
+      <p class="lede">Soy <b>Erick Lagos</b>. Construyo aplicaciones web completas —de la base de datos a la interfaz— y me estoy formando en ciberseguridad ofensiva para certificarme en la <b>eJPT</b>.</p>
+      <div class="actions">
+        <a class="btn primary" href="#work">Ver proyectos</a>
+        <a class="btn" href="https://github.com/ericklagosj" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/erick-matias-lagos-jara-42130624b" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+    <aside class="term" aria-label="Resumen de perfil">
+      <div class="term-bar"><i></i><i></i><i></i><b>erick@portafolio: ~</b></div>
+      <div class="term-body">
+        <div><span class="p">$</span>whoami</div>
+        <div><span class="v">dev full stack · estudiante de ciberseguridad</span></div>
+        <div><span class="p">$</span>cat perfil.json</div>
+        <div><span class="k">"rol"</span>: <span class="v">"trainee / junior"</span>,</div>
+        <div><span class="k">"modalidad"</span>: <span class="v">"híbrido · remoto"</span>,</div>
+        <div><span class="k">"stack"</span>: <span class="v">"Python · Flask · React · SQL"</span>,</div>
+        <div><span class="k">"cert"</span>: <span class="w">"eJPT (en curso)"</span>,</div>
+        <div><span class="k">"estado"</span>: <span class="ok">"disponible"</span></div>
+        <div><span class="p">$</span><span class="cur"></span></div>
+      </div>
+    </aside>
+  </section>
+
+  <section id="work">
+    <div class="shead">
+      <span class="no">01</span><h2>Proyectos</h2>
+      <p>Software real, en uso, no ejercicios de clase.</p>
+    </div>
+    <div class="projects">
+
+      <article class="card feature" data-reveal>
+        <a class="thumb" href="https://afsanignacio.com" target="_blank" rel="noopener"><img src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fafsanignacio.com?w=1400" alt="Captura del sitio AFS San Ignacio" loading="lazy"></a>
+        <div class="pad">
+          <div class="badge-row">
+            <span class="pill live">● En producción</span>
+            <span class="tech">Full stack</span>
+          </div>
+          <h3>AFS San Ignacio</h3>
+          <p class="desc">Plataforma oficial del campeonato de fútbol amateur de la comuna de San Ignacio (Región de Ñuble). Centraliza toda la temporada: tabla, resultados, fixture, planteles, asistencia, sanciones y goleadores, con un panel de administración por roles.</p>
+          <div class="stats">
+            <div class="stat"><b>15</b><span>equipos</span></div>
+            <div class="stat"><b>5</b><span>categorías</span></div>
+            <div class="stat"><b>3</b><span>roles de acceso</span></div>
+          </div>
+          <ul class="feat-list">
+            <li>Control de acceso por roles: Administrador, Secretaria y Visita</li>
+            <li>Tablas y estadísticas calculadas automáticamente desde cada jornada</li>
+            <li>Registro de asistencia, tarjetas y goleadores por jugador</li>
+            <li>5 categorías: Juvenil, Adulta, Senior, Super Senior y Honor</li>
+          </ul>
+          <div class="techrow">
+            <span class="tech"><i class="devicon-python-plain colored"></i>Python</span>
+            <span class="tech"><i class="devicon-flask-plain"></i>Flask</span>
+            <span class="tech"><i class="devicon-mysql-original colored"></i>MySQL</span>
+            <span class="tech"><i class="devicon-docker-plain colored"></i>Docker</span>
+            <span class="tech"><i class="devicon-javascript-plain colored"></i>JavaScript</span>
+          </div>
+          <div class="cardlinks">
+            <a href="https://afsanignacio.com" target="_blank" rel="noopener">Ver sitio en vivo ↗</a>
+            <a href="https://github.com/ericklagosj" target="_blank" rel="noopener">Repositorio ↗</a>
+          </div>
+        </div>
+        <aside class="aside-panel" aria-label="Detalle técnico">
+<span class="c"># modelo de datos</span>
+<span class="k">partidos</span>
+  resultado  '2-1'
+  estado     jugado | no_jugado
+<span class="k">categorias</span>
+  juvenil · adulta
+  senior · super_senior
+  honor
+<span class="c"># puntos</span>
+  win 3 · draw 1 · loss 0
+<span class="c"># roles</span>
+  admin   → total
+  secre   → carga jornadas
+  visita  → solo lectura
+<span class="c"># infra</span>
+  docker-compose
+  deploy afsanignacio.com</aside>
+      </article>
+
+      <article class="card" data-reveal>
+        <a class="thumb full" href="https://bitacora-tan.vercel.app/" target="_blank" rel="noopener"><img src="bitacora-montage.png" alt="Bitácora en escritorio y teléfono" loading="lazy"></a>
+        <div class="pad">
+          <div class="badge-row">
+            <span class="pill soon">En desarrollo</span>
+            <span class="tech">Producto propio</span>
+          </div>
+          <h3>Bitácora</h3>
+          <p class="desc">Aplicación web de tareas diarias con etiquetas, historial y alertas de pendientes, instalable en el teléfono como PWA. Nació de una necesidad real de mi propio trabajo de oficina y la uso a diario.</p>
+          <ul class="feat-list">
+            <li>Tareas con fecha y etiquetas (facturas, honorarios, viáticos)</li>
+            <li>Historial de completadas y filtros por fecha o etiqueta</li>
+            <li>Alertas de tareas pendientes tras varios días</li>
+            <li>Instalable con notificaciones; pensada luego para equipos</li>
+          </ul>
+          <div class="techrow">
+            <span class="tech"><i class="devicon-react-original colored"></i>React</span>
+            <span class="tech"><i class="devicon-typescript-plain colored"></i>TypeScript</span>
+            <span class="tech"><i class="devicon-supabase-plain colored"></i>Supabase</span>
+            <span class="tech">PWA</span>
+          </div>
+          <div class="cardlinks">
+            <a href="https://bitacora-tan.vercel.app/" target="_blank" rel="noopener">Ver app en vivo ↗</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="stack">
+    <div class="shead">
+      <span class="no">02</span><h2>Stack</h2>
+      <p>Herramientas con las que trabajo a diario.</p>
+    </div>
+    <div class="skills">
+      <div data-reveal data-d="0">
+        <h4>Backend</h4>
+        <div class="grid">
+          <div class="tool"><i class="devicon-python-plain colored"></i><span>Python</span></div>
+          <div class="tool"><i class="devicon-flask-plain"></i><span>Flask</span></div>
+          <div class="tool"><i class="devicon-nodejs-plain colored"></i><span>Node.js</span></div>
+          <div class="tool"><span class="mono">API</span><span>APIs REST</span></div>
+        </div>
+      </div>
+      <div data-reveal data-d="1">
+        <h4>Frontend y móvil</h4>
+        <div class="grid">
+          <div class="tool"><i class="devicon-react-original colored"></i><span>React</span></div>
+          <div class="tool"><span class="mono">Nx</span><span>Next.js</span></div>
+          <div class="tool"><i class="devicon-typescript-plain colored"></i><span>TypeScript</span></div>
+          <div class="tool"><i class="devicon-javascript-plain colored"></i><span>JavaScript</span></div>
+          <div class="tool"><i class="devicon-html5-plain colored"></i><span>HTML / CSS</span></div>
+          <div class="tool"><i class="devicon-react-original colored"></i><span>React Native</span></div>
+        </div>
+      </div>
+      <div data-reveal data-d="2">
+        <h4>Datos</h4>
+        <div class="grid">
+          <div class="tool"><i class="devicon-mysql-original colored"></i><span>MySQL</span></div>
+          <div class="tool"><i class="devicon-postgresql-plain colored"></i><span>PostgreSQL</span></div>
+          <div class="tool"><i class="devicon-supabase-plain colored"></i><span>Supabase</span></div>
+          <div class="tool"><span class="mono">Pr</span><span>Prisma</span></div>
+          <div class="tool"><span class="mono">BI</span><span>Power BI</span></div>
+        </div>
+      </div>
+      <div data-reveal data-d="3">
+        <h4>Flujo de trabajo y seguridad</h4>
+        <div class="grid">
+          <div class="tool"><i class="devicon-git-plain colored"></i><span>Git / GitHub</span></div>
+          <div class="tool"><i class="devicon-docker-plain colored"></i><span>Docker</span></div>
+          <div class="tool"><i class="devicon-linux-plain"></i><span>Linux</span></div>
+          <div class="tool"><span class="mono">Nm</span><span>Nmap</span></div>
+          <div class="tool"><span class="mono">BS</span><span>Burp Suite</span></div>
+          <div class="tool"><span class="mono">10</span><span>OWASP Top 10</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="security">
+    <div class="shead">
+      <span class="no">03</span><h2>Ciberseguridad</h2>
+      <p>La dirección hacia donde llevo mi carrera.</p>
+    </div>
+    <div class="sec" data-reveal>
+      <h3>Camino a la certificación eJPT</h3>
+      <p>Estudio seguridad ofensiva de forma práctica: reconocimiento, explotación web y post-explotación en laboratorios legales. Mi objetivo cercano es la eJPT (eLearnSecurity Junior Penetration Tester), y aplicar ese criterio a mi propio código.</p>
+      <div class="progress">
+        <span>eJPT</span>
+        <span class="bar"><i></i></span>
+        <span>preparación en curso</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="shead">
+      <span class="no">04</span><h2>Perfil</h2>
+      <p>De los números al código.</p>
+    </div>
+    <div class="two" data-reveal>
+      <ol class="path">
+        <li><div><h5>Técnico en Contabilidad</h5><p>La base: rigor con los datos y los procesos.</p></div></li>
+        <li><div><h5>Ingeniería Civil en Informática</h5><p>Desarrollo de software, bases de datos y sistemas.</p></div></li>
+        <li><div><h5>Prácticas profesionales en TI</h5><p>Experiencia aplicada en equipos reales.</p></div></li>
+        <li><div><h5>Finanzas · sector público municipal</h5><p>Entiendo desde dentro los procesos que el software debe resolver.</p></div></li>
+        <li class="now"><div><h5>Hoy</h5><p>Desarrollo mis proyectos y preparo la eJPT, buscando mi primer rol en TI.</p></div></li>
+      </ol>
+      <div class="edu">
+        <div class="item"><b>Ingeniero Civil en Informática</b><span>Universidad del Bío-Bío</span></div>
+        <div class="item"><b>Técnico de Nivel Medio en Contabilidad</b><span>Educación media técnico-profesional</span></div>
+        <div class="item"><b>eJPT — en curso</b><span>eLearnSecurity Junior Penetration Tester</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact" data-reveal>
+      <h2>Conversemos.</h2>
+      <p>Busco un rol trainee o junior en desarrollo web o ciberseguridad. Si tu equipo necesita a alguien que entienda el código y el proceso detrás, escríbeme.</p>
+      <div class="mail"><span id="mail">ericklagos2018@gmail.com</span><button id="copy" type="button">Copiar</button></div>
+      <div class="actions">
+        <a class="btn primary" href="https://www.linkedin.com/in/erick-matias-lagos-jara-42130624b" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://github.com/ericklagosj" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <span>© 2026 Erick Lagos</span>
+  <span>Hecho con HTML, CSS y café ☕</span>
+</footer>
+
+<script>
+(function(){
+  document.documentElement.classList.add('js');
+  var rev=document.querySelectorAll('[data-reveal]');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});
+    rev.forEach(function(el){io.observe(el);});
+  }else{rev.forEach(function(el){el.classList.add('in');});}
+  var t=document.getElementById('theme');
+  try{var s=localStorage.getItem('theme');if(s)document.documentElement.setAttribute('data-theme',s);}catch(e){}
+  t.addEventListener('click',function(){
+    var cur=document.documentElement.getAttribute('data-theme');
+    var dark=cur?cur==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+    var next=dark?'light':'dark';
+    document.documentElement.setAttribute('data-theme',next);
+    try{localStorage.setItem('theme',next);}catch(e){}
+  });
+  var c=document.getElementById('copy');
+  c.addEventListener('click',function(){
+    var txt=document.getElementById('mail').textContent;
+    function done(){c.textContent='Copiado';setTimeout(function(){c.textContent='Copiar';},1700);}
+    function fb(){var r=document.createRange();r.selectNodeContents(document.getElementById('mail'));var sel=getSelection();sel.removeAllRanges();sel.addRange(r);c.textContent='Seleccionado';}
+    try{navigator.clipboard.writeText(txt).then(done,fb);}catch(e){fb();}
+  });
+})();
+</script>
+</body>
+</html>
